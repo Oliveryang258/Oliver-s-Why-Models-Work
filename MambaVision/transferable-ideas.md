@@ -1,0 +1,8 @@
+简要的说，我认为最值得迁移的不是EfficientVMamba提出的ES2D结构，而是他的思想
+
+1. propagation 的过程不一定越复杂越好，更多的token交互在可能带来更强的表达能力的同时，也可能会带来大量无效的信息来稀释有效信息的浓度。所以和LocalMamba提出的内容有相似的地方在于我们未来的重心要放在信息数据流做的是否足够有效
+
+2. 本文里面将global transport 和 local representation这两个工作解耦并且由两个不同的模型来分别处理，虽然这可能遏制了模型真正的潜力，但是它确实提出了新的思路，未来的backbone可以走向不止一个单一机制的未来。
+
+3. 阶段结构的设计要根据模型在这一阶段的传播行为来决定。本文里面提出SSM 更适合：early stage，
+high-resolution，high information entropy feature space。而CNN 更适合：late stage，compact semantic feature space，local refinement。未来的重心要放在如何让模型知道不同层该采用什么传播行为，而这点是LocalMamba已经想到，而我们未来要去完善的地方。
